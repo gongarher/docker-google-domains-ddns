@@ -50,7 +50,7 @@ if [[ "${INTERVAL: -1}" == 'm' && "${INTERVAL:0:-1}" -lt 5 ]]; then
   exit 1
 fi
 
-USER_AGENT="dragoncube/docker-google-domains-ddns"
+USER_AGENT="gongarher/docker-google-domains-ddns"
 
 #-----------------------------------------------------------------------------------------------------------------------
 
@@ -62,7 +62,7 @@ function ts {
 
 while true
 do
-  RESPONSE=$(curl -S -s -k --user-agent "$USER_AGENT" -u "$USERNAME:$PASSWORD" "https://domains.google.com/nic/update?hostname=$HOSTNAME" 2>&1)
+  RESPONSE=$(curl -sS --user-agent "$USER_AGENT" -u "$USERNAME:$PASSWORD" "https://domains.google.com/nic/update?hostname=$HOSTNAME" 2>&1)
 
   # Sometimes the API returns "nochg" without a space and ip address. It does this even if the password is incorrect.
   if [[ $RESPONSE =~ ^(good|nochg) ]]

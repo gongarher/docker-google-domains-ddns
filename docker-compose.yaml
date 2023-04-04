@@ -1,0 +1,8 @@
+version: "2.4"
+services:
+  google-domains-ddns:
+    image: gongarher/google-domains-ddns
+    container_name: google-domains-ddns
+    volumes:
+      - ./path/to/config:/config
+      - /etc/localtime:/etc/localtime

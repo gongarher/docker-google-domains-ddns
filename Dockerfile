@@ -1,6 +1,10 @@
-FROM phusion/baseimage:0.9.17
+FROM alpine:latest
 
-MAINTAINER Kirill Uvaev <me@dragoncube.net>
+MAINTAINER Gonzalo García <gonzalo.garhtes@gmail.com>
+
+RUN apk --update upgrade && \
+    apk --no-cache add bash curl ca-certificates && \
+    rm -rf /var/cache/apk/*
 
 VOLUME ["/config"]
 
@@ -11,4 +15,4 @@ RUN chmod +x /root/google-domains-ddns/google-domains-ddns.sh
 # Create template config file
 ADD google-domains-ddns.conf /root/google-domains-ddns/google-domains-ddns.conf
 
-CMD /root/google-domains-ddns/google-domains-ddns.sh
+CMD ["/root/google-domains-ddns/google-domains-ddns.sh"]
