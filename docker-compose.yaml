@@ -4,5 +4,5 @@ services:
     image: gongarher/google-domains-ddns
     container_name: google-domains-ddns
     volumes:
-      - ./path/to/config:/config
+      - /config/dir/path:/config
       - /etc/localtime:/etc/localtime
